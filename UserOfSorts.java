@@ -1,4 +1,4 @@
-/** 
+/**
   test types of sorts that are polymorphic variations of Sorter
  */
 import java.util.Arrays;
@@ -30,21 +30,24 @@ public class UserOfSorts {
               // data destined for the START of the sorted region
             , "A"
 
-              /* buffering data, merely to keep the preceding data 
+              /* buffering data, merely to keep the preceding data
                  from having the special property of being last in
                  the input list.
                */
-            , "Z"  
+            , "Z"
             ));
 
-        // insertion sort                   
+        // insertion sort
         oneTest( "insertion sort "
                , new InsertionSorter( unsorted)
                );
+        oneTest( "selection sort "
+                , new SelectionSorter( unsorted)
+                );
     }
 
 
-    /** 
+    /**
      Run one test
      */
     private static void oneTest( String description
