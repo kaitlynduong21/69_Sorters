@@ -1,5 +1,6 @@
 /**
   Implement an insertion sort, in the Sorters structure
+
  */
 import java.util.ArrayList;
 
@@ -13,9 +14,18 @@ public class SelectionSorter extends Sorter {
         super(usersData);
     }
 
+    /**
+      traverse through the list
+      invoke champIndex for position 0 to n - 2
+      swap the element at the index returned after champIndex is invoked
+        with the element in the first region of the sorted region
+      pre-condition: a list of n elements
+      post-condition: a sorted list of the same n elements
+    **/
+
     public void mySort() {
       for (int i = 0; i < elements.size() - 1; i ++) {
-                int index = champIndex(elements, i);
+                int index = champIndex(i);
                 String min = elements.get(index);
                 elements.set(index, elements.get(i));
                 elements.set(i, min);
@@ -27,7 +37,14 @@ public class SelectionSorter extends Sorter {
               }
     }
 
-    private int champIndex(ArrayList<String> elements, int start) {
+    /** given a list of n elements, find the smallest element in the unsorted region
+    @return the index of the given element
+    pre-condition: a list of n elements with an unsorted region and a sorted region
+    post-condition: the list will have a sorted region that increases in size by 1 and a unsorted region
+      that decreases in size by 1
+    **/
+
+    private int champIndex(int start) {
         String champ = "";
         int index = start;
         for (int i = start; i < elements.size(); i ++) {

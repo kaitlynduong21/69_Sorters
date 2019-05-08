@@ -1,5 +1,7 @@
 /**
   Implement an insertion sort, in the Sorters structure
+
+
  */
 import java.util.ArrayList;
 
@@ -16,10 +18,13 @@ public class InsertionSorter extends Sorter {
 
 
     /**
-      sort the user's data, implementing insertion sort
+      traverse through the list
+      invoke insert1 for position 1 to n - 1
+      pre-condition: a list of n elements
+      post-condition: a sorted list of the same n elements
      */
     public void mySort() {
-      for (int goodNameNeeded = 1; goodNameNeeded < elements.size() - 1; goodNameNeeded++) {
+      for (int goodNameNeeded = 1; goodNameNeeded < elements.size(); goodNameNeeded++) {
         insert1(goodNameNeeded);
         /*System.out.println( "    dbg: "
           + "after inserting element " + goodNameNeeded
@@ -27,6 +32,14 @@ public class InsertionSorter extends Sorter {
           );*/
       }
     }
+
+    /** given a list of n elements, find the position of the first unsorted element in the current sorted region
+        insert the first unsorted element into the position
+        shift all larger values to the right one slot
+        pre-condition: a list of n elements with an unsorted region and a sorted region
+        post-condition: the list will have a sorted region that increases in size by 1 and a unsorted region
+          that decreases in size by 1
+    **/
 
     private void insert1(int alreadyInserted) {
       String valueToInsert = elements.get(alreadyInserted);
